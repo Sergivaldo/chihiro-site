@@ -17,7 +17,7 @@ http://chihiro-site.vercel.app/
 
 ## Stack utilizada
 
-**Front-end:** CSS, HTML
+**Front-end:** CSS, HTML, SASS
 
 
 
