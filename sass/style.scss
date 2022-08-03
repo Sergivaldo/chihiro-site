@@ -1,0 +1,225 @@
+@import 'animations';
+@import 'mixins';
+@import 'placeholders';
+@import 'variables';
+
+*{
+    @extend %reset-css;
+}
+
+html{
+    font-size: 10px;
+    font-family: 'Poppins',sans-serif;
+}
+
+body{
+    height: 100vh;
+    background: linear-gradient(130.02deg, #628E75 0.66%, #1A4855 85.32%);
+    background-size: 200% 200%;
+    -webkit-animation: bg-pan-left 4s infinite alternate both;
+	animation: bg-pan-left 4s infinite alternate both;
+    overflow: hidden;
+}
+
+header{
+    margin: 2rem auto;
+    padding: 4rem;
+    max-width: 1100px;
+    @include flex();
+
+    & > img{
+        width: 130px;
+    }
+
+    nav{
+        ul{
+            @include flex();
+            list-style: none;
+            gap: 3rem;
+
+            li{
+                @include flex(row,center,center);
+                padding: 1rem;
+                border-radius: 30px;
+                transition: background .3s ease-in-out;
+                cursor: pointer;
+                &:hover{
+                    background-color: lighten($color: $green, $amount: 10%);
+                }  
+
+            }
+
+             
+        }
+    }
+}
+
+main{
+
+    margin: 5rem auto;
+    max-width: 1100px;
+    section{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        div:nth-child(1){
+            width: 100%;
+            @include flex(column,flex-start,flex-start);
+
+            color: $white;
+
+            h2{
+                font-weight: 700;
+                font-size: 2rem;
+            }
+
+            h1{
+                font-weight: 900;
+                font-size: 6.8rem;
+                line-height: 109%;
+            }
+           
+            p{
+                margin-top: 2.5rem;
+                font-weight: 400;
+                font-size: 1.6rem;
+            }
+
+            div{
+                display: flex;
+                margin-top: 3rem;
+                button{
+                    padding: 1rem 2rem;
+                    width: 185px;
+                    height: 40px;
+                    color: white;
+                    font-family: 'Poppins',sans-serif;
+                    font-weight: 500;
+                }
+                button:nth-child(1){
+                    @include flex(row,center,center);
+                    background-color: $green;
+                    clip-path: polygon(10% 0, 100% 0%, 90% 100%, 0% 100%);
+                    transition: filter .2s ease-in;
+                    cursor: pointer;
+
+                    &:hover{
+                        filter: brightness(0.9);
+                    }
+                }
+                button:nth-child(2){
+                    background-image: url('/assets/button_border.svg');
+                    background-color: transparent;
+                    background-size: 185px 42px;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    transition: color .2s ease-in;
+                    cursor: pointer;
+                    &:hover{
+                        color: lighten($color: $green, $amount: 30%);
+                    }
+
+                }
+            }
+        }
+
+        div:nth-child(2){
+            margin-top: -5rem;
+            display: flex;
+            justify-content: flex-start;
+            div{
+                width: fit-content;
+            }
+            
+            div:nth-child(2){
+                margin-left: -16rem;
+            }
+
+        }
+
+        
+    }
+}
+
+
+@media(min-width:320px)and(max-width:480px){
+    header{
+        margin: 0 auto;
+        margin-bottom: 6rem;
+        padding: 2rem;
+        img{
+            width: 100px;
+        }
+        nav{
+            ul{
+                gap:3px;
+                
+                li{
+                    padding: 0.6rem;
+                    img{
+                        width: 20px;
+                    }
+                    
+                }
+            }
+        }
+    }
+
+    main{
+        margin:0 auto;
+        section{
+            grid-template-columns: 100vw;
+            justify-content: center;
+            div:nth-child(1){
+                margin-top: -6rem;
+                padding: 2rem;
+                h2{
+                    font-size: 1.5rem;
+                }
+                h1{
+                    display: inline-block;
+                    width: 70%;
+                    font-size: 3rem;
+                }
+                
+                p{
+                    display: inline-block;
+                    width: 80%;
+                    font-size: 1.4rem;
+                }
+                div{
+                    margin-top: 2rem;
+                    button{
+                        gap: 1.5rem;
+                        font-size: 1.2rem;
+                    }
+
+                    button:nth-child(2){
+                        display: none;
+                    }
+                }
+
+            }
+
+
+            div:nth-child(2){
+                display: flex;
+                justify-content: center;
+                grid-row: 1/2;
+
+                div{
+                    width: 250px;
+                    height: 250px;
+                }
+
+                div:nth-child(2){
+                   margin-left: -14rem;
+                }
+                
+            }
+
+        }
+    }
+
+}
+
